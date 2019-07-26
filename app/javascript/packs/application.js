@@ -1,14 +1,23 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import "bootstrap";
-//import insert from './form/insertForm';
-//import autocomplete from './form/autocomplete';
+// import insert from './form/insertForm';
+// import autocomplete from './form/autocomplete';
 import { initMapbox } from './plugins/init_mapbox';
-//import { sortList } from './plugins/sort_list';
+// import { initMapbox2 } from './user_show_map';
 
-//insert();
-//autocomplete();
+
+
+
+import { toggleFooter } from "./footer";
+
+// toggleFooter();
 initMapbox();
+// initMapbox2();
+// insert();
+// autocomplete();
+
+
 //sortList();
 
 

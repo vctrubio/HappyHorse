@@ -1,0 +1,14 @@
+
+<div class="container">
+
+<% @users.each do |user| %>
+<div class="row">
+  <div class="avatar">
+    <%= link_to user.username, user_path(user) %>
+  </div>
+</div>
+<% end %>
+
+
+
+</div>

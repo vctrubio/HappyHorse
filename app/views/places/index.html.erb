@@ -1,0 +1,52 @@
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All NGO's on site capitano!</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <p>You searched for <strong><%= @query %></strong>. We found <%= @places.count %> places out of our <%= Place.count %> on our website.</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @places.each do |place| %>
+      <div class="col-4">
+        <div class="flat-card">
+          <div class="flat-card-image" style="background-image: url('<%= place.photo %>')"></div>
+          <div class="flat-card-content">
+            <div class="flat-card-title">
+              <h4><%= place.name %></h4>
+            </div>
+            <p><%= place.address %></p>
+            <div class="flex">
+              <%if !(place.user.lists.nil?)%>
+              <div class="flex">
+                <span>Host: <%=place.user.username%>is offering <%= place.user.list_ids.count %> Classpass's</span>
+              </div>
+              <% end %>
+              <div class="flex ml-3">
+                <div >
+
+
+                <i class="material-icons mr-2">📍</i> <%= place.city %>
+
+              </div>
+            </div>
+          </div>
+          <div class="flat-card-actions">
+            <%= link_to 'More info', place_path(place) %>
+            <a href="#" class="ml-3 text-warning">Phone</a>
+            <a href="#" class="ml-3 text-danger">Follow!</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

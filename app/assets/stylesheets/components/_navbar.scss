@@ -22,6 +22,10 @@
   .nav-link{
     color: white;
   }
+
+  .nav-link-login{
+    color: black;
+  }
    .search-bar {
     flex-grow: .7 !important;}
 
@@ -42,8 +46,8 @@
 }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
-.sticky {
-  position: fixed;
+.sticky{
+  position: fixed !important;;
   top: 0;
   width: 100%;
 }
@@ -110,7 +114,7 @@
       color: $my-green !important;
       &:hover {
         color: rgba (2, 148, 165, 0.5);
-        border-bottom: 4px #0294A5;
+        border-bottom: 4px #992e24;
       }
     }
     .nav-item{
@@ -136,7 +140,6 @@ color: $my-green !important;
 flex-direction: row;
 width: 100%;
 }
-
 
 
 // a.navbar-brand{

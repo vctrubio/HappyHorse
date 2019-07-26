@@ -1,6 +1,5 @@
 class ListsController < ApplicationController
   before_action :find_list, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: [:show, :index]
 
   def index
     # @lists = ListPlace.alls
@@ -17,7 +16,7 @@ class ListsController < ApplicationController
       # @lists = policy_scope(List).where(sql_query, query: "%#{params[:query]}%")
     else
       # @lists = List.all
-      @lists = List.all.where(is_public: true)
+      @lists = List.all
       @upvoted = List.where()
       # @lists = policy_scope(List).order(created_at: :desc)
     end
@@ -39,20 +38,19 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new # (list_params)
-    @list.list_places.build.build_place
+    # @list.list_places.build.build_place
     # @list.places.build
   end
 
   def create
     @list = List.new(list_params)
-    @list.user = current_user
     # authorize @list
     # raise
     if @list.save
       # raise
-      redirect_to edit_list_path(@list)
+      redirect_to lists_path
     else
-      render 'lists/index'
+      render :new
     end
   end
 
@@ -80,6 +78,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :description, :is_public, :photo, list_places_attributes: [:comments, places_attributes: [:name, :address, :photo, :latitude, :longitude]]) # , places_attributes: [:places, :name, :address])
+    params.require(:list).permit(:name, :description, :is_public, :photo, :start_time, :price, :capacity, :length, :place_id, list_places_attributes: [:comments, places_attributes: [:name, :address, :photo, :latitude, :longitude]]) # , places_attributes: [:places, :name, :address])
   end
+
 end

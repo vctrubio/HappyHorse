@@ -8,6 +8,7 @@ class CreatePlaces < ActiveRecord::Migration[5.2]
       t.decimal :rating
       t.string :country
       t.string :city
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

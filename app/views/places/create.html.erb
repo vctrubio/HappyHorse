@@ -1,2 +1,12 @@
-<h1>Places#create</h1>
-<p>Find me in app/views/places/create.html.erb</p>
+<%= simple_form_for @place do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :address, placeholder: 'Where can we find you?'%>
+  <%= f.input :city %>
+  <%= f.input :location %>
+  <%= f.input :location %>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+
+

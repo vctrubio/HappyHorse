@@ -3,12 +3,12 @@
     <!-- first section contains profile photo and bio section -->
     <div class="row justify-content-center section top-section">
       <!-- profile picture -->
-      <div class="photo col-sm-5">
+      <div class="photo col-sm-6">
         <%= cl_image_tag(@user.photo.url, width: 300, height: 300, crop: :fill) unless @user.photo.url.nil? %>
       </div>
 
       <!-- bio section -->
-      <div class="col-sm-7 bio-section">
+      <div class="col-sm-78bio-section">
         <!-- name, username and edit button -->
         <div class="container">
           <div class="row">
@@ -27,18 +27,6 @@
             <div class="col-12">
               <ul>
                 <!-- would be better code to make a helper method instead of doing ruby calculations in the view -->
-                <% if @user.facebook.present? %>
-                <li><a href="<%= "http://www.facebook.com/" + @user.facebook %>" target="_blank"> <i class="clickable fab fa-facebook-square"></i></a></li>
-                <% end %>
-                <% if @user.instagram.present? %>
-                <li><a href="<%= "http://www.instagram.com/" + @user.instagram %>" target="_blank"> <i class="clickable fab fa-instagram"></i></a></li>
-                <% end %>
-                <% if @user.twitter.present? %>
-                <li><a href="<%= "http://www.twitter.com/" + @user.twitter %>" target="_blank"> <i class="clickable fab fa-twitter"></i></a></li>
-                <% end %>
-                <% if @user.linkedin.present? %>
-                <li><a href="<%= "http://www.linkedin.com/in/" + @user.linkedin %>" target="_blank"> <i class="clickable fab fa-linkedin"></i></a></li>
-                <% end %>
                 <% if @user.website.present? %>
                 <li><a href="<%= "http://" + @user.website %>" target="_blank"><i class="clickable fas fa-globe-americas"></i></a></li>
                 <% end %>
@@ -62,11 +50,16 @@
       <!-- lists owned by user -->
       <div class="list-section">
         <div class="container headline-container">
-        <strong><p id='mylist'>My Lists</p></strong>
+        <strong><p id='mylist'>My Organisations Created-</p></strong>
           <div class="row">
-            <% @user.lists.each do |list| %>
+            <% @user.places.each do |list| %>
             <div class="col-xs-12 col-sm-6 col-md-4">
-            <%= render 'shared/card', list: list %>
+            <div class ="card-name">
+            <h3><%= list.name %></h3>
+            <p id = "card-author">Author: <%= link_to list.user.username, place_path(list) %></p>
+            <p hidden id = "card-date"><%= list.created_at%> </p>
+            </div>
+
             </div>
             <% end %>
           </div>
@@ -89,7 +82,7 @@
         </div>
       </div>
 
-</div>
+
   <!--   third section contains map -->
   <!--   <div class="row justify-content-center section">
       <div class="col-6">

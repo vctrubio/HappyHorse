@@ -1,10 +1,13 @@
-<h1>Places#new</h1>
-<p>Find me in app/views/places/new.html.erb</p>
 
-<%= simple_form_for(@place, url: list_places_path) do |f| %>
-  <!-- [...] -->
+<div class="container-headling">
+  <h1>Places#new</h1>
+
+<%= simple_form_for @place do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
-  <%= f.submit 'Create list', class: 'btn btn-info'%>
-  <!-- [...] -->
+  <%= f.input :city %>
+  <%= f.input :photo, label %>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>
+
+</div>

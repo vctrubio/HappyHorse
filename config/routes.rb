@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  root to: 'pages#home'
+
   root to: 'lists#index'
-  resources :users, param: :slug, only: [:show, :new, :create, :update, :edit, :destroy] do
+  resources :users, param: :slug, only: [:show, :new, :create, :update, :edit, :destroy, :index] do
     member do
       get :following, :followers
     end
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
     resources :favourites
   end
 
-  resources :places, only: [:show, :update, :edit, :destroy]
+  resources :places, only: [:show, :update, :edit, :destroy, :create, :new, :index]
 
   #resources :listplaces, only: [:new, :create, :destroy]
   resources :favourites, only: [:new, :create, :destroy]

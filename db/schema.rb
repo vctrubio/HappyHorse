@@ -38,12 +38,17 @@ ActiveRecord::Schema.define(version: 2019_04_24_211600) do
     t.string "name"
     t.text "description"
     t.integer "likes"
-    t.bigint "user_id"
+    t.integer "capacity"
     t.boolean "is_public"
+    t.string "location"
+    t.integer "price"
+    t.datetime "start_time"
+    t.integer "length"
+    t.bigint "place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
-    t.index ["user_id"], name: "index_lists_on_user_id"
+    t.index ["place_id"], name: "index_lists_on_place_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -54,11 +59,13 @@ ActiveRecord::Schema.define(version: 2019_04_24_211600) do
     t.decimal "rating"
     t.string "country"
     t.string "city"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
+    t.string "photo", default: "https://res.cloudinary.com/vvrruubb69e/image/upload/v1554225663/product-default.jpg"
     t.float "latitude"
     t.float "longitude"
+    t.index ["user_id"], name: "index_places_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -82,14 +89,10 @@ ActiveRecord::Schema.define(version: 2019_04_24_211600) do
     t.string "username"
     t.string "location"
     t.boolean "is_admin"
-    t.string "photo"
+    t.string "photo", default: "https://res.cloudinary.com/vvrruubb69e/image/upload/v1564156660/Screenshot_2019-07-26_at_17.57.31.png"
     t.string "bio"
     t.string "full_name"
-    t.string "twitter"
-    t.string "facebook"
-    t.string "instagram"
     t.string "website"
-    t.string "linkedin"
     t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -99,5 +102,6 @@ ActiveRecord::Schema.define(version: 2019_04_24_211600) do
   add_foreign_key "favourites", "users"
   add_foreign_key "list_places", "lists"
   add_foreign_key "list_places", "places"
-  add_foreign_key "lists", "users"
+  add_foreign_key "lists", "places"
+  add_foreign_key "places", "users"
 end

@@ -2,8 +2,8 @@ const autocomplete = () => {
   //var input = document.getElementById('autocomplete');
   var inputs = document.querySelectorAll('#autocomplete');
   inputs.forEach((input, index) => {
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    var autocomplete = new mapbox.maps.places.Autocomplete(input);
+    mapbox.maps.event.addListener(autocomplete, 'place_changed', function() {
       fillInAddress();
     });
 

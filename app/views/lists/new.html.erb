@@ -1,41 +1,33 @@
 
 <div class = "list-container">
   <div class="lists-container" >
-    <h1>Create a list</h1>
 
-    <%= simple_form_for(@list) do |f| %>
-    <%= f.input :name , label_html: { class: 'form' } %>
-    <%= f.input :description , label_html: { class: 'form' } %>
-    <%= f.input :photo , label_html: { class: 'form' } %>
-    <%= f.input :photo_cache, label_html: { class: 'form' }, as: :hidden %>
-    <%= f.input :is_public, label_html: { class: 'form' } %>
+    <h1>Create a Workshop! User-form</h1>
+
 
     <div class = "list-newplace-container" >
-      <strong><p><br>Add a new place</p></strong>
-      <%= f.simple_fields_for :list_places do |h| %>
-      <%= h.simple_fields_for :place do |j| %>
-      <%= j.input :name, label_html: { class: 'form' }, :input_html => { :id => "autocomplete" }%>
-      <%= j.input :address, label_html: { class: 'form' }, :input_html => { :id => "full_address" } %>
-      <%= j.input :latitude, label_html: { class: 'form' },  :input_html => { :id => "latitude" } , as: :hidden%>
-      <%= j.input :longitude, label_html: { class: 'form' }, :input_html => { :id => "longitude" } , as: :hidden%>
-      <%= j.input :photo %>
-      <%= j.input :photo_cache, as: :hidden %>
-      <% end %>
-      <%= h.input :comments %>
-      <% end %>
+  <%= simple_form_for @list do |f| %>
+  <%= f.input :name, label: 'What are you offering', error: 'Title is mandatory, use it to attract seagels!' %>
+  <%= f.input :description, label: 'A short description' %>
+  <%= f.input :location %>
+  <%= f.input :price %>
+  <%= f.input :is_public, label: 'Can anyone come' %>
+  <%= f.input :capacity, label: 'If so, How many people can come?' %>
+  <%= f.input :length, label: 'For how long: in minutes' %>
+   <br><h2>To make a Class, you need to host it first from an NGO, do you have one? If not please make one</h2>
+    <%= f.input :place_id, collection: current_user.places%>
+    <%= f.input :start_time, label: 'When do you plan on having it?' %>
 
-      <% forms = (1..10).map { render "lists/form" , f: f  } %>
-      <button type='button' id="insertForm" data-forms="<%= forms.join('$$$$$') %>">Add a new place
-      </button>
+    <p>ps: Sorry its not the best</p>
+    <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
 
-      <br>
     </div>
 
-    <%= f.submit 'Submit', class: 'btn btn-info'%>
-    <% end %>
 
   </div>
 </div>
-
+<!--
 <%= javascript_pack_tag 'form/autocomplete' %>
 <%= javascript_pack_tag 'form/insertForm' %>
+ -->

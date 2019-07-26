@@ -1,0 +1,18 @@
+
+<br>
+<br>
+<div class="container">
+<p><%= link_to "Search for ALL NGOs  around you", places_path %></p>
+<p><%= link_to "CLASSPASS: Lesson avaiable starting now! Don't forget to sign up", lists_path %></p>
+<p><%= link_to "Feeling good? Create your first workshop", new_list_path %></p>
+<p><%= link_to "Finish off with your OWN classpass", new_place_path %></p>
+
+<br>
+<br>
+
+<% if user_signed_in? %>
+<h2>Profile and friends</h2>
+<p><%= link_to "YOU", user_path(current_user) %></p>
+<p><%= link_to "Find Friends", users_path %></p>
+<% end %>
+</div>

@@ -5,12 +5,12 @@
           <div class="card-content">
             <div class ="card-name">
             <h3><%= list.name %></h3>
-            <p id = "card-author"><%= link_to list.user.username, user_path(list.user) %></p>
-            <p hidden id = "card-date"><%= list.created_at%></p>
+            <p id = "card-author"><%= link_to list.place.name, place_path(list.place) %></p>
+            <p hidden id = "card-date"><%= list.created_at%> </p>
             </div>
 
-          <% if not list.user.photo.blank? %>
-          <img src="<%=image_url list.user.photo.url%>" alt="" class="card-user">
+          <% if not list.place.photo.blank? %>
+          <img src="<%=image_url list.place.photo.url%>" alt="" class="card-user">
           <% end %>
 
             <div class="card-likes">

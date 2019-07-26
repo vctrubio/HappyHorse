@@ -1,5 +1,5 @@
 <% if current_page?(root_path) || current_page?(lists_path) %>
-<div class="home-banner" style="background-image: linear-gradient(-90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 50%), url('<%= image_path 'LISTA-BANNER-1.jpg' %>');">
+<div class="home-banner" style="background-image: linear-gradient(-90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 50%), url('<%= image_path 'london.jpg' %>');">
   <div class="banner-content">
     <h1>Share your favorite places</h1>
   </div>
@@ -8,7 +8,7 @@
     <%= form_tag lists_path, method: :get do %>
     <%= text_field_tag :query,
     params[:query],
-    placeholder: "Search for a place, city or country"
+    placeholder: "Search: Organisation / Lessons / Cities"
     %>
     <% end %>
   </div>
@@ -18,8 +18,6 @@
 
 
 <div class="container">
-
-
 
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4"> </div>
