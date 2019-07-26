@@ -228,6 +228,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap
+  bundler (~> 2.0.1)
   carrierwave (~> 1.2)
   cloudinary (~> 1.9.1)
   devise
